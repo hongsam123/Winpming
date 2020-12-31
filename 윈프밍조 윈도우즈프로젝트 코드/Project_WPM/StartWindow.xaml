@@ -1,0 +1,48 @@
+﻿<Window x:Class="Project_WPM.StartWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Project_WPM"
+        mc:Ignorable="d"
+        Title="StartWindow" Height="700" Width="1000">
+
+    <Grid>
+        <!--게임의 제목, Background : ImageBrush 속성의 ImageSource를 이용하여 파일 내부경로 Resources의 제목이미지를 가져옴.-->
+
+        <Grid.Background>
+            <ImageBrush  ImageSource="/Resources/background/background_main.jpg" 
+                         AlignmentY="Top" 
+                         AlignmentX="Center"/>
+        </Grid.Background>
+        <StackPanel x:Name="mainStackPanel" 
+                    Margin="15" >
+            <Grid Height="450" 
+                  Margin="10,0,0.2,0">
+                <Grid.Background>
+                    <ImageBrush Stretch="Fill"
+                                ImageSource="/Resources/background/text_main.png"
+                                AlignmentY="Top" 
+                                AlignmentX="Center"/>
+                </Grid.Background>
+            </Grid>
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center"
+                        Height="100">
+                <Button x:Name="startBtn" 
+                        Width="297" 
+                        Click="start_Click" 
+                        Opacity="1" 
+                        Margin="0,0,0,-24"
+                        Style="{StaticResource RoundButtonTemplate}">
+                    <!--App에 선언한 Button Style 사용-->
+                    <!--button에 Resource를 적용하기 위해 StaticResource이용하여 Btn image를 가져옴-->
+                    <Button.Background>
+                        <ImageBrush ImageSource="Resources/background/start_btn.png"/>
+                    </Button.Background>
+                </Button>
+            </StackPanel>
+        </StackPanel>
+     
+    </Grid>
+</Window>

@@ -1,0 +1,85 @@
+﻿<Window x:Class="Project_WPM.EasyWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Project_WPM"
+        mc:Ignorable="d"
+        Title="EasyWindow" Height="700" Width="1000"
+        x:Name="easywindow">
+
+    <!--1. 전체를 StackPanel의 Horizontal로 설정 하여 게임 part와 설정 part 나눔
+        2. 설정 part를 또 내부로 StackPanel의 Vertical로 설정하여 label, button, processbar가 차례로 쌓임 -->
+    <Grid>
+        <Grid.Background>
+            <ImageBrush  ImageSource="/Resources/background/background.jpg" AlignmentY="Top" AlignmentX="Center"/>
+        </Grid.Background>
+        <StackPanel Orientation="Horizontal"
+                    Margin="0,20,10,40">
+
+
+            <UniformGrid Margin="20,0,20,0.4" Width="700 " 
+                         x:Name="gameBoard" />
+
+            <StackPanel Orientation="Vertical" Margin="0,20,20,20.4" Width="238">
+
+                <Label Content="Easy Mode"
+                       HorizontalContentAlignment="Center"
+                       Margin="0,0,0,30"
+                       FontSize="30"/>
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Center"
+                            Margin="10"
+                            Background="Beige">
+                    <Label Content="남은카드"
+                           FontSize="25"/>
+                </StackPanel>
+                <Label  Content ="{Binding Matched, ElementName=easywindow}"
+                          HorizontalContentAlignment="Center"
+                          
+                           Background="White"
+                           FontSize="30" Margin="64,0,64.4,0"/>
+
+                <Button x:Name="btn_stop"
+                        Content="일시정지"
+                        Width="120"
+                        Height="40"
+                        Margin="10,100,10,0"
+                        FontSize="20"
+                        Click="btn_stop_Click"/>
+                <Button x:Name="btn_exit"
+                        Content="나가기"
+                        Width="120"
+                        Height="40"
+                        Margin="10,10,10,0"
+                        FontSize="20"
+                        Click="btn_exit_Click"/>
+
+                <!--Timer의 label과 processbar를 binding하여 시간 초 가 줄어들면 processbar가 함께 줄어듬.-->
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Center"
+                            Margin="10,50,10,10"
+                            Background="OrangeRed"
+                            >
+                    <Label Content="Timer :"
+                           Foreground="White"
+                           FontSize="30"/>
+                    <Label      x:Name="timelabel"
+                            Content="{Binding Path = Count, Mode=OneWay}"
+                           Margin="2"
+                           Background="White"
+                           FontSize="30"/>
+                </StackPanel>
+                <ProgressBar x:Name="progressbar"
+                     Minimum="0"
+                     Maximum="10"
+                     Height="30"
+                    Margin="10,10,10,10"
+                     Value="{Binding Path = Count}" HorizontalAlignment="Right" Width="218"
+                     />
+
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+
+</Window>
